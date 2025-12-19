@@ -149,6 +149,7 @@ class IncrementalNet(BaseNet):
             self.convnet.mem.train() 
             alpha = 0.5
             self.fc.weight.data = alpha * refined_weights + (1 - alpha) * weights
+            weights = self.fc.weight.data 
 
         newnorm = torch.norm(weights[-increment:, :], p=2, dim=1)
         oldnorm = torch.norm(weights[:-increment, :], p=2, dim=1)
